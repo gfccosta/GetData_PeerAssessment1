@@ -105,4 +105,5 @@ As requested, the tidy data is saved on a simple text file.
     write.table(tidydata, 'tidy-data.txt',row.name=FALSE)
 ```
 
-With the **mdata** variable we had all the data in the best normalization. From that we can rebuild any view from the data.
+With the **mdata** variable we had all the data in the best normalization. From that we can rebuild any view from the data. For example, it is possible to select the measurements sampled for the X axis without the need of column filtering by name.
+
