@@ -45,7 +45,8 @@ names(data_labeled) <- c('activity', as.character(features[grep('(mean|std)\\(',
 names(data_subjects) <- c('subject')
 data <- cbind(data_subjects, data_labeled) %>% mutate(subject=as.factor(subject))
 library(reshape2)
-mdata <- melt(data, id=c('subject', 'activity'), variable.name = 'signalVariable')
+data <- mutate(data, id=seq(along.with=data[,1]))
+mdata <- melt(data, id=c('id','subject', 'activity'), variable.name = 'signalVariable')
 mdata <- cbind(mdata, colsplit(mdata$signalVariable, "-", c("signal","aggregationAxis")))  %>% select(-signalVariable) %>% mutate(signal=as.factor(signal))
 mdata <- cbind(mdata, colsplit(mdata$aggregationAxis, "-", c("aggregation", "axis")))  %>% select(-aggregationAxis) %>% mutate(aggregation=as.factor(aggregation), axis=as.factor(axis))
 
